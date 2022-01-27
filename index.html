@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 200px;
+            width: 200px;
+            background-color: purple;
+        }
+        [v-cloak]{
+            display:none
+        }
+        input{
+            margin: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="head" v-cloak>
+    counter: {{counter}}
+    <input  @keyup.enter="greet(counter + '!!!!!!!1')" v-model="counter" />
+    <hr>
+    <div v-if="isVisible" class="box"></div>
+    <button @click="toggleBox">CLick me</button>
+    <input-lelo/>
+   
+</div>
+   
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    let app=Vue.createApp({
+        data:function(){
+            return{
+                counter:"Hello vue 3",
+                isVisible:false
+            }
+        },
+        methods:{
+            toggleBox(){
+                this.isVisible=!this.isVisible
+            } ,
+        greet(greeting){
+            console.log(greeting)
+
+        }
+        }
+    })
+    app.component('input-lelo',{
+        template:`
+        <form @submit.prevent="handlesubmit">
+            <h1>{{title}}</h1>
+            <p v-for="(str,i) in inputs" :key="i">{{i}}</p>
+        <custom-input type="email"  v-model="email" v-bind:label="passwordlabel"/>
+        <custom-input type="password" v-model="password" :label="emaillabel"/>
+        <button>Log in</button>
+        </form>
+        
+        `,
+        components:["custom-input"],
+        data(){
+            return{
+                title:"Login Form",
+                inputs:[
+                "apple","mango","bannane","strawberry"
+                ],
+                email:"",
+                password:"",
+                emaillabel:"Email",
+                passwordlabel:"Password"
+            }
+        },
+        methods:{
+            handlesubmit(){
+                console.log(this.email,this.password)
+            }
+        }
+    })
+    app.component('custom-input',{
+        template:`
+        <label>
+            {{label}}
+            <input type="text" v-model="inputValue"/>
+        </label>
+        
+        `,
+        props:['label','modelValue'],
+        computed:{
+            inputValue:{
+                get(){
+                    return this.modelValue
+                },
+                set(value){
+                    this.$emit('update:modelValue',value)
+                }
+            }
+        }
+        // data(){
+        //     return {
+        //         inputValue:""
+        //     }
+        // }
+    })
+    app.mount('#head')
+</script>
+</html>
