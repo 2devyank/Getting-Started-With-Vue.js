@@ -19,6 +19,10 @@
         :key="index"
          :todoString="todo.todoString"
          :completed="todo.completed"
+         @on-delete="deleteTodo(todo)"
+         @on-toggle="toggleTodo(todo)"
+         @on-edit="editTodo(todo,$event)"
+       
         />
       </ul>
     </div>
@@ -38,9 +42,9 @@ export default {
   data(){
     return {
       todos:[
+        {todoString:"make Angular course",completed:true},
         {todoString:"make Angular course",completed:false},
-        {todoString:"make Angular course",completed:false},
-        {todoString:"make Angular course",completed:false},
+        {todoString:"make Angular course",completed:true},
         {todoString:"make Angular course",completed:false},
       ]
     }
