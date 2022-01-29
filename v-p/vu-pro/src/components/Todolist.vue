@@ -1,16 +1,16 @@
 <template>
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <p class="display-3">
+    <div class="row">
+      <NewTodo @on-addtodo="addTodo($event)"
 
-      Vue Crash course
-      </p>
+    
+      />
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
 <p>Add create form </p>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-12 col-lg-6">
       <ul class="list-group">
@@ -34,10 +34,12 @@
 
 <script>
 import Todo from "./Todo.vue"
+import NewTodo from "./NewTodo.vue"
 
 export default {
   components:{
-    Todo
+    Todo,
+    NewTodo
   },
   data(){
     return {
