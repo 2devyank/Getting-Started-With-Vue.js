@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<style>
+    .box{
+        height: 400px;
+        width: 400px;
+        background-color: blue;
+        border: rgb(59, 63, 75) solid 2px;
+    }
+    .fav{
+        background-color: purple;
+        width: 300px;
+        height: 200px;
+    }
+</style>
+<script src="https://unpkg.com/vue@next"></script>
+<body>
+    <div id="head">
+   <li v-for="book in filterbooks" :class="{fav:book.isFav}"  @click="setshow(book)">
+       <h1>{{book.title}}</h1>
+       <p>{{book.author}}</p>
+   </li>
+  <div class="box" @mouseover="handlevent">1</div>
+  <div class="box" @mouseleave="handlevent">2</div>
+  <div class="box" @dblclick="handlevent">3</div>
+  <div class="box" @mousemove="mouse">{{x}} {{y}}</div>
+   </div>
+</body>
+<script>
+    const app=Vue.createApp({
+        data(){
+            return {
+                show:true,
+                x:0,
+                y:0,
+                books:[
+                    {title:"devyank",author:"nagpal",isFav: true },
+                    {title:"devyank",author:"nagpal",isFav: false },
+                    {title:"devyank",author:"nagpal",isFav: true }
+                ]
+            }
+        },
+        methods:{
+            setshow(book){
+                book.isFav=!book.isFav
+            },
+            handlevent(){
+                console.log("events")
+            },
+            mouse(e){
+                this.x=e.offsetX
+                this.y=e.offsetY
+            }
+        },
+        computed:{
+            filterbooks(){
+                return this.books.filter((book)=>book.isFav)
+            }
+        }
+    })
+
+    app.mount('#head')
+</script>
+</html>
