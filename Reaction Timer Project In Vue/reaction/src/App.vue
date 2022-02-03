@@ -1,12 +1,42 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<script >
+import Block from "./components/Block.vue"
+import Results from "./components/Results.vue"
+export default{
+  data(){
+    return{
+      isplaying:false,
+      delay:null,
+      score:null,
+      showResults:false
+    }
+  },
+  components:{
+   Block,Results
+  },
+  methods:{
+    start(){
+      this.delay=2000+Math.random()*5000
+      this.isplaying=true
+      this.showResults=false
+    },
+    endgame(reactiontime){
+this.score=reactiontime
+this.isplaying=false
+this.showResults=true
+    }
+  }
+}
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+<div>
+<h1>Reaction Timer</h1>  
+<button @click="start" :disabled="isplaying">play</button>
+<Block v-if="isplaying" :delay="delay"   @end="endgame" />
+<!-- <p v-if="showResults">Score {{score}}</p> -->
+<br>
+<Results :score="score" :showResults="showResults"/>
+</div>
 </template>
 
 <style>
@@ -15,7 +45,7 @@ import HelloWorld from './components/HelloWorld.vue'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #444;
   margin-top: 60px;
 }
 </style>
