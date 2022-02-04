@@ -29,10 +29,7 @@
       </div>
      <button>Submit</button>
   </form>
-  Email :{{email}}
-  Password :{{password}}
-  {{role}}
-  {{terms}}
+  
 
 </template>
 
