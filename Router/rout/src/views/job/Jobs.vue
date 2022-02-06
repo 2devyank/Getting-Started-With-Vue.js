@@ -13,8 +13,14 @@
 export default {
 data(){
     return{
-        types:[{name:"freelancer",id:"1"},{name:"web developre",id:"2"},{name:"web desiner",id:"3"}]
+       types:[]
     }
+},
+mounted(){
+fetch('http://localhost:3000/jobs')
+.then(res=>res.json())
+.then(data=>this.types=data)
+.catch(err=>console.log(err.message))
 }
 }
 </script>
