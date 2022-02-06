@@ -11,7 +11,7 @@
       <button @click="$store.commit('increasecounter')">+</button>
       <button @click="$store.commit('decreasecounter')">-</button>
     </div>
-    <input type="text" spaceholder="color" v-model="$store.state.colorCode">
+    <input type="text" spaceholder="color" v-model="colorCode">
   </div>
 
 </template>
@@ -21,6 +21,16 @@
 
 export default {
   name: 'Home',
+  computed:{
+    colorCode:{
+set(newValue){
+this.$store.commit('newcolorCode',newValue)
+},
+get(){
+  return this.$store.state.colorCode
+}
+    }
+  }
   // data(){
   //   return{
   //     counter:0
