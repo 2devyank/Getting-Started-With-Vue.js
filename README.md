@@ -1,3 +1,9 @@
+👋 Hi , this is my open sourced  guide for Vue.js below down I have also added some resources for Vue.js which will help you to start your journey with it and become a vue developer.  
+
+
+# What is Vue ?
+Vue  is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS and JavaScript, and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be it simple or complex.
+
 # [Why Vue ?](https://youtu.be/_XErZvXXalY)
 - Progressive Framework
 - Approachable
@@ -24,6 +30,14 @@
 `<style>
 <--Css-->
 </style>`
+
+# 💻Installation
+- You can just add vue to your project by adding the Vue CDN 
+- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+- Using NPM
+- `npm install vue`
+
 
 
 # Vue Resources
