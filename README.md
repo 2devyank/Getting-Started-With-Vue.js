@@ -60,3 +60,6 @@ Add this CDN to your project
 
 ## Vue Test Utils 
 - [Unit Testing in Vue.js ](https://youtu.be/QzAk9ngoeb4)
+
+## Vuex & Firebase
+- [Vuex 4 & Firebase](https://youtu.be/M955GrNXPG0)
